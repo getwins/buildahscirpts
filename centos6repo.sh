@@ -36,7 +36,7 @@ mkdir -p /var/www/html/repos/zabbix/non-supported/rhel/6/x86_64
 ln -s /var/www/html/repos/zabbix/zabbix/4.0/rhel/6 /var/www/html/repos/zabbix/zabbix/4.0/rhel/6Server
 ln -s /var/www/html/repos/zabbix/non-supported/rhel/6 /var/www/html/repos/zabbix/non-supported/rhel/6Server
 
-reposync  --repoid=zabbix --norepopath --download_path=/var/www/html/repos/zabbix/zabbix/4.0/rhel/x86_64 --downloadcomps --download-metadata
+reposync  --repoid=zabbix --norepopath --download_path=/var/www/html/repos/zabbix/zabbix/4.0/rhel/6/x86_64 --downloadcomps --download-metadata
 reposync  --repoid=zabbix-non-supported --norepopath --download_path=/var/www/html/repos/zabbix/non-supported/rhel/6/86_64 --downloadcomps --download-metadata
 
 createrepo /var/www/html/repos/zabbix/zabbix/4.0/rhel/6/x86_64 
