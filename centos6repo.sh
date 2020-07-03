@@ -33,11 +33,17 @@ cp -u /etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS* /var/www/html/repos/centos/
 mkdir -p /var/www/html/repos/zabbix/zabbix/4.0/rhel/6/x86_64
 mkdir -p /var/www/html/repos/zabbix/non-supported/rhel/6/x86_64
 # for rhel6 releasever
-ln -s /var/www/html/repos/zabbix/zabbix/4.0/rhel/6 /var/www/html/repos/zabbix/zabbix/4.0/rhel/6Server
-ln -s /var/www/html/repos/zabbix/non-supported/rhel/6 /var/www/html/repos/zabbix/non-supported/rhel/6Server
+cd /var/www/html/repos/zabbix/zabbix/4.0/rhel/
+if [ ! -e 6Server ]; then
+	ln -s 6 6Server
+fi
+cd /var/www/html/repos/zabbix/non-supported/rhel/
+if [ ! -e 6Server ]; then
+	ln -s 6 6Server
+fi
 
 reposync  --repoid=zabbix --norepopath --download_path=/var/www/html/repos/zabbix/zabbix/4.0/rhel/6/x86_64 --downloadcomps --download-metadata
-reposync  --repoid=zabbix-non-supported --norepopath --download_path=/var/www/html/repos/zabbix/non-supported/rhel/6/86_64 --downloadcomps --download-metadata
+reposync  --repoid=zabbix-non-supported --norepopath --download_path=/var/www/html/repos/zabbix/non-supported/rhel/6/x86_64 --downloadcomps --download-metadata
 
 createrepo /var/www/html/repos/zabbix/zabbix/4.0/rhel/6/x86_64 
 createrepo /var/www/html/repos/zabbix/non-supported/rhel/6/x86_64
